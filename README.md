@@ -66,27 +66,43 @@ public class Ticket {
     private TicketType type; //Поле может быть null
     private Person person; //Поле может быть null
 }
+
+
+
+
 public class Coordinates {
     private Float x; //Поле не может быть null
     private float y;
 }
+
+
+
 public class Person {
     private Long height; //Поле может быть null, Значение поля должно быть больше 0
     private Float weight; //Поле может быть null, Значение поля должно быть больше 0
     private Color eyeColor; //Поле не может быть null
     private Color hairColor; //Поле не может быть null
 }
+
+
+
 public enum TicketType {
     VIP,
     USUAL,
     BUDGETARY,
     CHEAP;
 }
+
+
+
 public enum Color {
     GREEN,
     BLACK,
     WHITE;
 }
+
+
+
 public enum Color {
     RED,
     BLACK,
