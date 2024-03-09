@@ -1,6 +1,6 @@
 package org.example.collection;
 
-import org.example.expection.InvalidValue;
+import org.example.exception.InvalidValue;
 
 public class Person {
     private Long height; //Поле может быть null, Значение поля должно быть больше 0
