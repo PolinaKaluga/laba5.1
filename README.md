@@ -69,40 +69,40 @@ public class Ticket {
 ```
 
 
-
-*public class Coordinates {
+```java
+public class Coordinates {
     private Float x; //Поле не может быть null
     private float y;
-}*
+}
+```
 
-
-
+```java
 public class Person {
     private Long height; //Поле может быть null, Значение поля должно быть больше 0
     private Float weight; //Поле может быть null, Значение поля должно быть больше 0
     private Color eyeColor; //Поле не может быть null
     private Color hairColor; //Поле не может быть null
 }
+```
 
-
-
+```java
 public enum TicketType {
     VIP,
     USUAL,
     BUDGETARY,
     CHEAP;
 }
+```
 
-
-
+```java
 public enum Color {
     GREEN,
     BLACK,
     WHITE;
 }
+```
 
-
-
+```java
 public enum Color {
     RED,
     BLACK,
@@ -110,3 +110,4 @@ public enum Color {
     ORANGE,
     WHITE;
 }
+```
