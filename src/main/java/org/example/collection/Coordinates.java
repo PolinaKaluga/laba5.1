@@ -11,6 +11,11 @@ public class Coordinates {
         return x;
     }
 
+    public Coordinates(Float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public float getY() {
         return y;
     }
@@ -26,3 +31,4 @@ public class Coordinates {
         this.y = y;
     }
 }
+

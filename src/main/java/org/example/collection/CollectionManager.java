@@ -1,8 +1,11 @@
 package org.example.collection;
+import org.example.exception.InvalidValue;
+
 import java.util.ArrayDeque;
+import java.util.Comparator;
 
 public class CollectionManager {
-    private ArrayDeque<String> collection = new ArrayDeque<>();
+    private ArrayDeque<Ticket> collection = new ArrayDeque<>();
 
     public void help() {
         System.out.println(":");
@@ -24,25 +27,41 @@ public class CollectionManager {
         System.out.println("print_field_descending_price : вывести значения поля price всех элементов в порядке убывания");
     }
 
-    public void info() {
 
+    public void info() {
+        System.out.println("Collection size: " + collection.size());
     }
 
     public void show() {
-        // проходить по коллекции for each?
+        for (Ticket element : collection) {
+            System.out.println(element);
+        }
     }
 
-    public void add(String element) {
+    public void add(Ticket element) {
         collection.add(element);
         System.out.println("Added: " + element);
     }
 
-    public void updateById(int id, String element) {
-        // Реализация команды update id {element}
+    public void updateById(int id, Ticket updatedTicket) throws InvalidValue {
+        for (Ticket ticket : collection) {
+            if (ticket.getId() == id) {
+                ticket.setName(updatedTicket.getName());
+                ticket.setCoordinates(updatedTicket.getCoordinates());
+                ticket.setCreationDate(updatedTicket.getCreationDate());
+                ticket.setPrice(updatedTicket.getPrice());
+                ticket.setType(updatedTicket.getType());
+                ticket.setPerson(updatedTicket.getPerson());
+                System.out.println("Updated ticket with ID " + id);
+                return;
+            }
+        }
+        System.out.println("Ticket with ID " + id + " not found.");
     }
 
     public void removeById(int id) {
-        // Реализация команды remove_by_id id
+        collection.removeIf(ticket -> ticket.getId() == id);
+        System.out.println("Removed tickets with ID " + id);
     }
 
     public void clear() {
@@ -50,9 +69,9 @@ public class CollectionManager {
         System.out.println("Collection cleared.");
     }
 
-    public void remove_first(){
+    public void removeFirst(){
         if (!collection.isEmpty()) {
-            String removedElement = collection.pollFirst();
+            Ticket removedElement = collection.pollFirst();
             System.out.println("Removed first element from the collection: " + removedElement);
         } else {
             System.out.println("Collection is empty. No elements to remove.");
@@ -67,12 +86,32 @@ public class CollectionManager {
         }
     }
 
-    public void  add_if_min(){}
+    public void add_if_min(Ticket newTicket){
+        if (collection.isEmpty() || newTicket.getPrice() < collection.stream().mapToInt(Ticket::getPrice).min().orElse(Integer.MAX_VALUE)) {
+            add(newTicket);
+            System.out.println("Added a new ticket as its price is the lowest in the collection.");
+        } else {
+            System.out.println("The price of the new ticket is not the lowest in the collection.");
+        }
+    }
 
-    public void  ilter_starts_with_name(){}
+    public void filter_starts_with_name(String name){
+        collection.stream()
+                .filter(ticket -> ticket.getName().startsWith(name))
+                .forEach(System.out::println);
+    }
 
-    public void print_field_descending_person(){}
+//    public void print_field_descending_person(){
+//        collection.stream()
+//                .sorted(Comparator.comparing(ticket -> ticket.getClass().toString()).reversed())
+//                .forEach(System.out::println);
+//    } тут не очень знаю как
 
-    public void print_field_descending_price(){}
 
+    public void print_field_descending_price(){
+        collection.stream()
+                .sorted(Comparator.comparingInt(Ticket::getPrice).reversed())
+                .forEach(System.out::println);
+    }
 }
+

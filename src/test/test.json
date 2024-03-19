@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Ticket 1",
+    "coordinates": {
+      "x": 10.5,
+      "y": 20.3
+    },
+    "creationDate": "2024-03-10",
+    "price": 100,
+    "type": "VIP",
+    "person": {
+      "height": 180,
+      "weight": 70.5,
+      "eyeColor": "GREEN",
+      "hairColor": "BLACK"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Ticket 2",
+    "coordinates": {
+      "x": 15.2,
+      "y": 25.8
+    },
+    "creationDate": "2024-03-10",
+    "price": 50,
+    "type": "BUDGETARY",
+    "person": {
+      "height": 160,
+      "weight": 55.2,
+      "eyeColor": "WHITE",
+      "hairColor": "RED"
+    }
+  }
+]

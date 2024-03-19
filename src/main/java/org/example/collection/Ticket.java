@@ -13,6 +13,16 @@ public class Ticket {
     private TicketType type; //Поле может быть null
     private Person person; //Поле может быть null
 
+    public Ticket(int id, String name, Coordinates coordinates, LocalDate creationDate, int price, TicketType type, Person person) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.price = price;
+        this.type = type;
+        this.person = person;
+    }
+
     public int getId() {
         return id;
     }
@@ -26,7 +36,9 @@ public class Ticket {
     }
 
     public void setName(String name) throws InvalidValue {
-        if(name == null){throw new InvalidValue("Имя не может быть пустым");}
+        if (name == null) {
+            throw new InvalidValue("Имя не может быть пустым");
+        }
         this.name = name;
     }
 
@@ -34,8 +46,10 @@ public class Ticket {
         return coordinates;
     }
 
-    public void setCoordinates(Coordinates coordinates) throws InvalidValue{
-        if(coordinates == null){throw new InvalidValue("Кордината не может быть пустой");}
+    public void setCoordinates(Coordinates coordinates) throws InvalidValue {
+        if (coordinates == null) {
+            throw new InvalidValue("Кордината не может быть пустой");
+        }
         this.coordinates = coordinates;
     }
 
@@ -44,8 +58,10 @@ public class Ticket {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) throws InvalidValue{
-        if(creationDate == null){throw new InvalidValue("");}
+    public void setCreationDate(LocalDate creationDate) throws InvalidValue {
+        if (creationDate == null) {
+            throw new InvalidValue("");
+        }
         this.creationDate = creationDate;
     }
 
@@ -53,8 +69,10 @@ public class Ticket {
         return price;
     }
 
-    public void setPrice(int price) throws InvalidValue{
-        if(price <= 0){throw new InvalidValue("Цена должна быть положительная");}
+    public void setPrice(int price) throws InvalidValue {
+        if (price <= 0) {
+            throw new InvalidValue("Цена должна быть положительная");
+        }
         this.price = price;
     }
 
@@ -62,8 +80,10 @@ public class Ticket {
         return type;
     }
 
-    public void setType(TicketType type) throws InvalidValue{
-        if(type==null){throw new InvalidValue("");}
+    public void setType(TicketType type) throws InvalidValue {
+        if (type == null) {
+            throw new InvalidValue("");
+        }
         this.type = type;
     }
 
@@ -71,9 +91,23 @@ public class Ticket {
         return person;
     }
 
-    public void setPerson(Person person)throws InvalidValue {
-        if(person==null){throw new InvalidValue("");}
+    public void setPerson(Person person) throws InvalidValue {
+        if (person == null) {
+            throw new InvalidValue("");
+        }
         this.person = person;
     }
 
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", price=" + price +
+                ", type=" + type +
+                ", person=" + person +
+                '}';
+    }
 }
