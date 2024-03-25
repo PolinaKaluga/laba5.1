@@ -1,6 +1,10 @@
 package org.example.commands;
 import org.example.collection.CollectionManager;
 
+
+/**
+ * Класс команды, которая очищает коллекцию хранения программы.
+ */
 public class ClearCommand implements Command{
     private CollectionManager collectionManager;
     /**

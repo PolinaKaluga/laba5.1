@@ -44,7 +44,7 @@ public class FileManager {
      * @param str      строка, которую следует записать в файл
      */
     public void writeToFile(String str, String filePath) {
-        //TO DO
+
     }
 
 }

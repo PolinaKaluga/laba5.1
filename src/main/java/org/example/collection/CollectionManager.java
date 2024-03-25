@@ -102,9 +102,7 @@ public class CollectionManager {
     }
 
 //    public void print_field_descending_person(){
-//        collection.stream()
-//                .sorted(Comparator.comparing(ticket -> ticket.getClass().toString()).reversed())
-//                .forEach(System.out::println);
+
 //    } тут не очень знаю как
 
 
