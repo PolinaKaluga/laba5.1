@@ -58,4 +58,43 @@ public class JsonParser {
         }
         return tickets;
     }
+
+    public String parseToFile(Ticket[] tickets) {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Ticket ticket : tickets) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", ticket.getId());
+            jsonObject.put("name", ticket.getName());
+            jsonObject.put("coordinates", new JSONObject()
+                    .put("x", ticket.getCoordinates().getX())
+                    .put("y", ticket.getCoordinates().getY()));
+            jsonObject.put("creationDate", ticket.getCreationDate().toString());
+            jsonObject.put("price", ticket.getPrice());
+
+            // Добавляем тип билета, если он не null
+            if (ticket.getType() != null) {
+                jsonObject.put("type", ticket.getType().toString());
+            }
+
+            // Добавляем информацию о человеке, если она есть
+            if (ticket.getPerson() != null) {
+                Person person = ticket.getPerson();
+                JSONObject personObject = new JSONObject();
+                if (person.getHeight() != null) {
+                    personObject.put("height", person.getHeight());
+                }
+                if (person.getWeight() != null) {
+                    personObject.put("weight", person.getWeight());
+                }
+                personObject.put("eyeColor", person.getEyeColor().toString());
+                personObject.put("hairColor", person.getHairColor().toString());
+                jsonObject.put("person", personObject);
+            }
+
+            jsonArray.put(jsonObject);
+        }
+
+        return jsonArray.toString();
+    }
 }

@@ -6,7 +6,7 @@ import org.example.commands.CommandInvoker;
 import org.example.io.UserIO;
 import org.example.workWithFile.FileManager;
 import org.example.workWithFile.JsonParser;
-
+import org.example.workWithFile.TicketFieldsReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -36,6 +36,10 @@ public class Application {
      * хранит ссылку на объект, который производит запуск выбранных команд
      */
     CommandInvoker commandInvoker;
+    /**
+     * хранит ссылку на объект, производящий чтение полей класса Ticket
+     */
+    TicketFieldsReader ticketFieldsReader;
 
 
     /**
@@ -51,9 +55,9 @@ public class Application {
         jsonParser = new JsonParser();
         userIO = new UserIO();
 
-//        labWorkFieldsReader = new LabWorkFieldsReader(userIO);
+        ticketFieldsReader = new TicketFieldsReader(userIO);
 
-//        this.commandInvoker = new CommandInvoker(collectionManager, userIO, inputFile, ticketFieldsReader);
+        this.commandInvoker = new CommandInvoker(collectionManager, userIO, inputFile, ticketFieldsReader);
 
         try {
             File ioFile = new File(inputFile);
@@ -61,8 +65,6 @@ public class Application {
             if (!ioFile.canWrite() || ioFile.isDirectory() || !ioFile.isFile()) throw new IOException();
 
             String fileData= fileManager.readFromFile(inputFile);
-
-            System.out.println(fileData);
 
             List<Ticket> tickets = jsonParser.parseToCollection(fileData);
             for (Ticket ticket : tickets) {
@@ -91,8 +93,7 @@ public class Application {
             userIO.printCommandText("\nВведите название команды:\n");
             userIO.printPreamble();
             String line = userIO.readLine();
-//            commandInvoker.execute(line);
-            System.out.println(line);
+            commandInvoker.execute(line);
         }
     }
 }

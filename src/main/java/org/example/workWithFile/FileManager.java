@@ -1,7 +1,9 @@
 package org.example.workWithFile;
 
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -41,10 +43,20 @@ public class FileManager {
      * Метод, производящий запись данных в указанный файл.
      *
      * @param filePath файл, куда следует записывать данные
-     * @param str      строка, которую следует записать в файл
+     * @param values      строка, которую следует записать в файл
      */
-    public void writeToFile(String str, String filePath) {
-
+    public void writeToFile(String values, String filePath) {
+        try {
+            filePath="test2.json";
+            FileWriter writer = new FileWriter(filePath);
+            writer.write(values);
+            writer.close();
+            System.out.println("Содержимое успешно записано в файл.");
+        } catch (IOException e) {
+            System.err.println("Ошибка при записи в файл.");
+            e.printStackTrace();
+        }
     }
 
 }
+
