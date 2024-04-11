@@ -1,36 +1,33 @@
-[
-  {
-    "id": 1,
-    "name": "Ticket 1",
-    "coordinates": {
-      "x": 10.5,
-      "y": 20.3
-    },
-    "creationDate": "2024-03-10",
-    "price": 100,
-    "type": "VIP",
-    "person": {
-      "height": 180,
-      "weight": 70.5,
-      "eyeColor": "GREEN",
-      "hairColor": "BLACK"
-    }
+[ {
+  "id" : 2,
+  "name" : "Moscow",
+  "coordinates" : {
+    "x" : 10.0,
+    "y" : 10.0
   },
-  {
-    "id": 2,
-    "name": "Ticket 2",
-    "coordinates": {
-      "x": 15.2,
-      "y": 25.8
-    },
-    "creationDate": "2024-03-10",
-    "price": 50,
-    "type": "BUDGETARY",
-    "person": {
-      "height": 160,
-      "weight": 55.2,
-      "eyeColor": "WHITE",
-      "hairColor": "RED"
-    }
+  "creationDate" : [ 2024, 4, 11 ],
+  "price" : 10,
+  "type" : "CHEAP",
+  "person" : {
+    "height" : 170,
+    "weight" : 50.0,
+    "eyeColor" : "GREEN",
+    "hairColor" : "YELLOW"
   }
-]
+}, {
+  "id" : 3,
+  "name" : "Saint",
+  "coordinates" : {
+    "x" : 20.0,
+    "y" : 20.0
+  },
+  "creationDate" : [ 2024, 4, 11 ],
+  "price" : 20,
+  "type" : "VIP",
+  "person" : {
+    "height" : 180,
+    "weight" : 60.0,
+    "eyeColor" : "BLACK",
+    "hairColor" : "WHITE"
+  }
+} ]

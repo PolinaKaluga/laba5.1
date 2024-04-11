@@ -27,12 +27,15 @@ public class SaveCommand implements Command{
     }
     /**
      * Метод, сохраняющий коллекцию в указанном файле в формате XML. В случае некорректной работы высветится ошибка.
+     *
+     * @return
      */
 
     @Override
-    public void execute() {
+    public boolean execute() {
         collectionManager.save(inputFile);
         System.out.println("Коллекция была сохранена.");
+        return false;
     }
     /**
      * @return Метод, возвращающий описание команды.
@@ -40,6 +43,6 @@ public class SaveCommand implements Command{
      */
     @Override
     public String getDescription() {
-        return "сохраняет коллекцию в указанный файл";
+        return "команда сохраняет коллекцию в указанный файл";
     }
 }

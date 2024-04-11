@@ -25,7 +25,15 @@ public class JsonParser {
             float x = coordinatesObject.getFloat("x");
             float y = coordinatesObject.getFloat("y");
             // Парсинг даты создания билета
-            String creationDateString = jsonObject.getString("creationDate");
+            JSONArray creationDateArray = jsonObject.getJSONArray("creationDate");
+            String creationDateString;
+            if (creationDateArray.get(0) instanceof Integer) {
+                creationDateString = Integer.toString((Integer) creationDateArray.get(0));
+            } else {
+                creationDateString = creationDateArray.getString(0);
+            }
+            // Format the creationDateString to the expected format
+            creationDateString = creationDateString + "-01-01";
             LocalDate creationDate = LocalDate.parse(creationDateString);
             // Парсинг цены
             int price = jsonObject.getInt("price");
@@ -58,6 +66,7 @@ public class JsonParser {
         }
         return tickets;
     }
+
 
     public String parseToFile(Ticket[] tickets) {
         JSONArray jsonArray = new JSONArray();

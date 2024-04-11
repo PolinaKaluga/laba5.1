@@ -20,10 +20,13 @@ public class InfoCommand implements Command {
     }
     /**
      * Метод, исполняющий команду. Выводит описание коллекции TreeMap экземпляров LabWork.
+     *
+     * @return
      */
     @Override
-    public void execute() {
+    public boolean execute() {
         collectionManager.info();
+        return false;
     }
     /**
      * @return Возвращает описание команды.

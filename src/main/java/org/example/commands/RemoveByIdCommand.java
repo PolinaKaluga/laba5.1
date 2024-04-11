@@ -2,25 +2,38 @@ package org.example.commands;
 
 
 import org.example.collection.CollectionManager;
+
+import java.util.Scanner;
+
 /**
  * Класс команды, которая удаляет элемент из коллекции по его id.
  */
 public class RemoveByIdCommand implements Command {
     private CollectionManager collectionManager;
-    private int id;
 
-    public RemoveByIdCommand(CollectionManager collectionManager, int id){
+    public RemoveByIdCommand(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
-        this.id = id;
     }
 
     @Override
-    public void execute() {
-        collectionManager.removeById(id);
+    public boolean execute() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите id элемента, который нужно удалить: ");
+        int id = scanner.nextInt();
+
+        if (collectionManager.removeById(id)) {
+            System.out.println("Элемент с id " + id + " успешно удален.");
+            return true;
+        } else {
+            System.out.println("Ошибка: Элемент с id " + id + " не найден в коллекции.");
+            return false;
+        }
     }
 
     @Override
     public String getDescription() {
-        return "удалить элемент из коллекции по его id";
+
+        return "команда удаляет элемент по заданному id";
     }
 }

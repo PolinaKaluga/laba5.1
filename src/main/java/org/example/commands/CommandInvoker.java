@@ -2,7 +2,9 @@ package org.example.commands;
 
 
 import org.example.collection.CollectionManager;
+import org.example.collection.Ticket;
 import org.example.commands.*;
+import org.example.exception.InvalidValue;
 import org.example.io.UserIO;
 import org.example.workWithFile.TicketFieldsReader;
 
@@ -96,18 +98,24 @@ public class CommandInvoker {
         commandsWithoutArguments.put("save", new SaveCommand(collectionManager, inputFile));
         commandsWithoutArguments.put("exit", new ExitCommand());
         commandsWithoutArguments.put("help", new HelpCommand(commandsWithoutArguments, commandsWithArguments));
-//        commandsWithoutArguments.put("history", new HistoryCommand(commandsHistoryList));
-//        commandsWithoutArguments.put("print_field_descending_author", new PrintFieldDescendingAuthor(collectionManager));
-//        commandsWithoutArguments.put("print_field_ascending_difficulty", new PrintFieldAscendingDifficultyCommand(collectionManager));commandsWithoutArguments.put("help", new HelpCommand(commandsWithoutArguments, commandsWithArguments));
-//        commandsWithoutArguments.put("group_counting_by_difficulty", new GroupCountingByDifficult(collectionManager));
-//        commandsWithoutArguments.put("insert",new InsertElementWithoutIDCommand(collectionManager,userIO,labWorkFieldsReader));
+        commandsWithoutArguments.put("add", new AddCommand(collectionManager));
+        commandsWithoutArguments.put("update", new UpdateIdCommand(collectionManager));
+        commandsWithoutArguments.put("remove", new RemoveByIdCommand(collectionManager));
+        commandsWithoutArguments.put("head", new HeadCommand(collectionManager));
+        commandsWithoutArguments.put("remove_first", new RemoveFirstCommand(collectionManager));
+        commandsWithoutArguments.put("filter", new FilterStartsWithName(collectionManager));
+        commandsWithoutArguments.put("print_person", new PrintFieldDescendingPerson(collectionManager));
+        commandsWithoutArguments.put("print_price", new PrintFieldDescendingPrice(collectionManager));
+        String scriptFileName = "script.txt"; // Set the script file name here
+        commandsWithoutArguments.put("script", new ExecuteScriptFileNameCommand(collectionManager, scriptFileName));
+        commandsWithoutArguments.put("addMin", new AddIfMinCommand(collectionManager));
 
-//        commandsWithArguments.put("insert_with_id", new InsertElementCommand(collectionManager, userIO, labWorkFieldsReader));
-//        commandsWithArguments.put("update", new UpdateElementCommand(collectionManager, userIO));
-//        commandsWithArguments.put("remove_key", new RemoveKeyElementCommand(collectionManager));
-//        commandsWithArguments.put("execute_script", new ExecuteScriptCommand(collectionManager, labWorkFieldsReader, script));
-//        commandsWithArguments.put("remove_lower", new RemoveLowerElement(collectionManager));
-//        commandsWithArguments.put("remove_greater_key", new RemoveGreaterKeyCommand(collectionManager));
+
+
+
+
+
+
     }
 
     /**
@@ -115,7 +123,7 @@ public class CommandInvoker {
      * Если команда не распознана, то в стандартный поток вывода выводится соответствующее сообщение.
      * @param firstCommandLine Первая строка команды, где хранится само ее название и переданные на этой же строке аргументы.
      */
-    public void execute(String firstCommandLine) {
+    public void execute(String firstCommandLine) throws InvalidValue {
         String[] words = firstCommandLine.trim().split("\\s+");//убираем пробелы в начале и конце. Сплитуем по пробелам
 
         String[] args = Arrays.copyOfRange(words, 1, words.length); //Выдергиваем аргументы
@@ -130,4 +138,6 @@ public class CommandInvoker {
             System.err.println("Команда " + words[0] + " не распознана, для получения справки введите команду help");
         }
     }
+
+
 }

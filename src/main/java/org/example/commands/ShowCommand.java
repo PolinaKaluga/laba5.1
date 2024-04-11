@@ -21,10 +21,17 @@ public class ShowCommand implements Command {
     }
     /**
      * Метод, исполняющий команду. Показывает подробное содержание содержимого коллекции.
+     *
+     * @return
      */
     @Override
-    public void execute() {
-        collectionManager.show();
+    public boolean execute() {
+        if (!collectionManager.getCollection().isEmpty()) {
+            collectionManager.show();
+        } else {
+            System.out.println("Коллекция пустая.");
+        }
+        return false;
     }
     /**
      * @return Метод, возвращающий описание команды.
@@ -32,6 +39,6 @@ public class ShowCommand implements Command {
      */
     @Override
     public String getDescription() {
-        return "показывает подробное содержимое всех элементов коллекции";
+        return "команда показывает подробное содержимое всех элементов коллекции";
     }
 }

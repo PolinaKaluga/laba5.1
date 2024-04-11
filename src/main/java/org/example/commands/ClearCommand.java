@@ -17,11 +17,14 @@ public class ClearCommand implements Command{
     }
     /**
      * Метод, исполняющий команду. Выводит сообщение когда коллекция очищена.
+     *
+     * @return
      */
     @Override
-    public void execute() {
+    public boolean execute() {
         collectionManager.clear();
         System.out.println("Коллекция была очищена");
+        return false;
     }
     /**
      * @return Описание команды.
@@ -29,7 +32,8 @@ public class ClearCommand implements Command{
      */
     @Override
     public String getDescription() {
-        return "очищает все элементы коллекции";
+
+        return "команда очищает все элементы коллекции";
     }
 
 

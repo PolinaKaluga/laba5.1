@@ -2,12 +2,20 @@ package org.example.collection;
 
 import org.example.exception.InvalidValue;
 
+
+
+/**
+ * Класс - пассажир объекта класса Ticket.
+ */
+
 public class Person {
     private Long height; //Поле может быть null, Значение поля должно быть больше 0
 
     private Float weight; //Поле может быть null, Значение поля должно быть больше 0
     private EyeColor eyeColor; //Поле не может быть null
     private HairColor hairColor; //Поле не может быть null
+
+
 
 
     public Person(Long height,Float weight, EyeColor eyeColor,HairColor hairColor ){

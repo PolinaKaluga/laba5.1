@@ -1,7 +1,5 @@
 package org.example.commands;
 
-import org.example.collection.CollectionManager;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,15 +30,18 @@ public class HelpCommand implements Command{
     }
     /**
      * Метод, исполняющий команду. Выводит описание всех доступных в программе команд.
+     *
+     * @return
      */
     @Override
-    public void execute() {
+    public boolean execute() {
         for (Map.Entry<String, Command> entry : commandWithoutArgumentsHashMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue().getDescription());//перебор Map в цикле. Ключ+значение
         }
         for (Map.Entry<String, CommandWithArguments> entry : commandWithArgumentsHashMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue().getDescription());//перебор Map в цикле. Ключ+значение
         }
+        return false;
     }
     /**
      * @return Описание данной команды.
@@ -48,6 +49,6 @@ public class HelpCommand implements Command{
      */
     @Override
     public String getDescription() {
-        return "выводит справку по всем командам";
+        return "комнада выводит справку по всем командам";
     }
 }
