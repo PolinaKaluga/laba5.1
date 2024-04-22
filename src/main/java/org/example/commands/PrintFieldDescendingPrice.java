@@ -35,7 +35,7 @@ public class PrintFieldDescendingPrice implements Command {
 
         System.out.println("Список билетов в порядке убывания цены:");
         for (Ticket ticket : tickets) {
-            System.out.println("Ticket ID: " + ticket.getId() + "Ticket price: " + ticket.getPrice());
+            System.out.println("Ticket ID: " + ticket.getId() + " Ticket price: " + ticket.getPrice());
         }
 
         return true;

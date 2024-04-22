@@ -60,7 +60,6 @@ public class CollectionManager {
      */
     public void info() {
         System.out.println("Collection type: " + collection.getClass().getName());
-        System.out.println("Collection initialization date: " + initializationDate);
         System.out.println("Collection size: " + collection.size());
     }
 

@@ -38,7 +38,7 @@ public class PrintFieldDescendingPerson implements Command {
 
         System.out.println("Список билетов в порядке убывания роста персоны:");
         for (Ticket ticket : tickets) {
-            System.out.println("Ticket ID: " + ticket.getId());
+            System.out.println("Ticket ID: " + ticket.getId() + " Person height:" + ticket.getPerson().getHeight());
         }
 
         return true;

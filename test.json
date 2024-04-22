@@ -1,33 +1,17 @@
 [ {
-  "id" : 2,
+  "id" : 1,
   "name" : "Moscow",
   "coordinates" : {
     "x" : 10.0,
     "y" : 10.0
   },
-  "creationDate" : [ 2024, 4, 11 ],
-  "price" : 10,
-  "type" : "CHEAP",
-  "person" : {
-    "height" : 170,
-    "weight" : 50.0,
-    "eyeColor" : "GREEN",
-    "hairColor" : "YELLOW"
-  }
-}, {
-  "id" : 3,
-  "name" : "Saint",
-  "coordinates" : {
-    "x" : 20.0,
-    "y" : 20.0
-  },
-  "creationDate" : [ 2024, 4, 11 ],
-  "price" : 20,
+  "creationDate" : [ 2024, 4, 12 ],
+  "price" : 1000,
   "type" : "VIP",
   "person" : {
-    "height" : 180,
+    "height" : 170,
     "weight" : 60.0,
-    "eyeColor" : "BLACK",
-    "hairColor" : "WHITE"
+    "eyeColor" : "GREEN",
+    "hairColor" : "YELLOW"
   }
 } ]
